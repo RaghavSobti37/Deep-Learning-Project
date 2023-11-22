@@ -64,7 +64,7 @@ def reconstruct_image_from_representation(config):
     neural_net, content_feature_maps_index_name, style_feature_maps_indices_names = utils.prepare_model(config['model'], device)
 
     # don't want to expose everything that's not crucial so some things are hardcoded
-    num_of_iterations = {'adam': 3000, 'lbfgs': 350}
+    num_of_iterations = {'adam': 3000, 'lbfgs': 600}
 
     set_of_feature_maps = neural_net(img)
 
@@ -152,16 +152,16 @@ if __name__ == "__main__":
     # modifiable args - feel free to play with these (only small subset is exposed by design to avoid cluttering)
     #
     parser = argparse.ArgumentParser()
-    parser.add_argument("--should_reconstruct_content", type=bool, help="pick between content or style image reconstruction", default=True)
+    parser.add_argument("--should_reconstruct_content", type=bool, help="pick between content or style image reconstruction", default=False)
     parser.add_argument("--should_visualize_representation", type=bool, help="visualize feature maps or Gram matrices", default=False)
 
-    parser.add_argument("--content_img_name", type=str, help="content image name", default='lion.jpg')
-    parser.add_argument("--style_img_name", type=str, help="style image name", default='ben_giles.jpg')
+    parser.add_argument("--content_img_name", type=str, help="content image name", default='golden_gate.jpg') # content image
+    parser.add_argument("--style_img_name", type=str, help="style image name", default='udnie.jpg') # style image
     parser.add_argument("--height", type=int, help="width of content and style images (-1 keep original)", default=500)
 
-    parser.add_argument("--saving_freq", type=int, help="saving frequency for intermediate images (-1 means only final)", default=1)
-    parser.add_argument("--model", type=str, choices=['vgg16', 'vgg19'], default='vgg19')
-    parser.add_argument("--optimizer", type=str, choices=['lbfgs', 'adam'], default='lbfgs')
+    parser.add_argument("--saving_freq", type=int, help="saving frequency for intermediate images (-1 means only final)", default= 1) # 1 to save every iteration image and -1 is not to not save
+    parser.add_argument("--model", type=str, choices=['vgg16', 'vgg19'], default='vgg19') 
+    parser.add_argument("--optimizer", type=str, choices=['lbfgs', 'adam'], default='lbfgs') # We can use adam optimizer for low cmoputational power
     parser.add_argument("--reconstruct_script", type=str, help='dummy param - used in saving func', default=True)
     args = parser.parse_args()
 
@@ -176,5 +176,3 @@ if __name__ == "__main__":
 
     # reconstruct style or content image purely from their representation
     results_path = reconstruct_image_from_representation(optimization_config)
-
-    # create_video_from_intermediate_results(results_path, img_format)
