@@ -43,4 +43,5 @@ To reconstruct only the content or the style of an image, you can modify the scr
 This code is based on the paper:
 - Gatys, L. A., Ecker, A. S., & Bethge, M. (2016). *Image Style Transfer Using Convolutional Neural Networks*. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
 
-## Credits and Inspiration : gordicaleksa/pytorch-neural-style-transfer 
+## Credits and Inspiration 
+[gordicaleksa/pytorch-neural-style-transfer ](https://github.com/gordicaleksa/pytorch-neural-style-transfer.git)
