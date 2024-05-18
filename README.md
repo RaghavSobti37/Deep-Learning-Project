@@ -2,8 +2,6 @@
 
 This repository contains the implementation of the original Neural Style Transfer (NST) algorithm as described in the paper by Gatys et al. It also includes additional scripts for reconstructing only the content or the style of the image, providing a deeper understanding of how NST works.
 
-## Repository Structure
-
 ## Requirements
 
 To set up the environment, you need to have Conda installed. Run the following command to create the necessary environment:
